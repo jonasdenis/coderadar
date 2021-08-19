@@ -2,7 +2,6 @@ import java.text.SimpleDateFormat
 
 apply plugin: "com.diffplug.gradle.spotless"
 apply plugin: "org.asciidoctor.convert"
-apply plugin: "org.ajoberstar.git-publish"
 apply plugin: "jacoco"
 
 ext {
@@ -52,16 +51,6 @@ asciidoctor {
     dependsOn test
     sourceDir "src/main/asciidoc"
     outputDir "build/docs"
-}
-
-gitPublish {
-    repoUri = "https://github.com/adessoAG/coderadar.git"
-    branch = "gh-pages"
-    contents {
-        from "build/pages"
-        into "current/docs"
-    }
-    commitMessage = "automatically updated docs"
 }
 
 task preparePages() {
